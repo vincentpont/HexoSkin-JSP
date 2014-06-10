@@ -3,6 +3,116 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  
+      <!-- Placez ce script JavaScript asynchrone juste devant votre balise </body> -->
+    <script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client:plusone.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+    </script>
+    
+    <!-- Google charts </body> -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses'],
+          ['2013',  1000,      400],
+          ['2014',  1170,      460],
+          ['2015',  660,       1120],
+          ['2016',  1030,      540]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0},
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div1'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Director (Year)',  'Rotten Tomatoes', 'IMDB'],
+          ['Alfred Hitchcock (1935)', 8.4,         7.9],
+          ['Ralph Thomas (1959)',     6.9,         6.5],
+          ['Don Sharp (1978)',        6.5,         6.4],
+          ['James Hawes (2008)',      4.4,         6.2]
+        ]);
+
+        var options = {
+          title: 'The decline of \'The 39 Steps\'',
+          vAxis: {title: 'Accumulated Rating'},
+          isStacked: true
+        };
+
+        var chart = new google.visualization.SteppedAreaChart(document.getElementById('chart_div2'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses'],
+          ['2004',  1000,      400],
+          ['2005',  1170,      460],
+          ['2006',  660,       1120],
+          ['2007',  1030,      540]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses'],
+          ['2004',  1000,      400],
+          ['2005',  1170,      460],
+          ['2006',  660,       1120],
+          ['2007',  1030,      540]
+        ]);
+
+        var options = {
+          title: 'Company Performance'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div4'));
+        chart.draw(data, options);
+      }
+    </script>
+
+    
+    
+    
+    
+  
+  
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +120,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="bootstrap-3.1.1/docs/assets/ico/favicon.ico">
 
-    <title>Hello World</title>
+    <title>HexoSkin-TB</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="bootstrap-3.1.1/dist/css/bootstrap.min.css">
@@ -44,12 +154,22 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a href="#">About</a></li>
           </ul>
           <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
+          
+            <span id="signinButton">
+			  <span
+			    class="g-signin"
+			    data-callback="signinCallback"
+			    data-clientid="799362622292-cisd7bgllvoo1pckcsm38smvl9ec1m60.apps.googleusercontent.com"
+			    data-cookiepolicy="single_host_origin"
+			    data-requestvisibleactions="http://schemas.google.com/AddActivity"
+			    data-scope="https://www.googleapis.com/auth/plus.login">
+			  </span>
+			</span>
+
           </form>
         </div>
       </div>
@@ -60,7 +180,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview</a></li>
-            <li><a href="#">Reports</a></li>
+            <li><a href="#">Analyser séance</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Export</a></li>
           </ul>
@@ -79,31 +199,33 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Dashboard</h1>
-
+           <h3>Dernière séance : 28.04.2014</h3>
+<br>
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+              <div id="chart_div1" style="width: 300px; height: 250px;"></div>
+              <h4>Performance</h4>
+              <span class="text-muted">ECG / Respiration</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+			<div id="chart_div2" style="width: 300px; height: 250px;"></div>
+
+              <h4>Accélération</h4>
+              <span class="text-muted">Vitesse km/h</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+              <div id="chart_div3" style="width: 300px; height: 250px;"></div>
+              <h4>Vitesse moyenne</h4>
+              <span class="text-muted">m/min</span>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+			<div class="col-xs-6 col-sm-3 placeholder">
+              <div id="chart_div4" style="width: 300px; height: 250px;"></div>
+              <h4>Dénivelé</h4>
+              <span class="text-muted">% pente</span>
             </div>
           </div>
 
-          <h2 class="sub-header">Section title</h2>
+          <h2 class="sub-header">Historiques Séances</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
