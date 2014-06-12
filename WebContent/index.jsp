@@ -4,14 +4,28 @@
 <html lang="en">
   <head>
   
-      <!-- Placez ce script JavaScript asynchrone juste devant votre balise </body> -->
-    <script type="text/javascript">
-      (function() {
-       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-       po.src = 'https://apis.google.com/js/client:plusone.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-     })();
-    </script>
+        <!-- Placez ce script JavaScript asynchrone juste devant votre balise </body> -->
+	    <script type="text/javascript">
+	      (function() {
+	       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	       po.src = 'https://apis.google.com/js/client:plusone.js';
+	       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	     })();
+	    </script>
+	    
+	    <script>
+        function signinCallback(authResult) {
+      	  if (authResult['access_token']) {
+      		alert("You'r logged.");
+      	    
+      	  } else if (authResult['error']) {
+        	document.getElementById('signinButton').setAttribute('style', 'display: none');
+      		alert("Error, not logged.");
+      		window.location = "login.jsp";
+      	  }
+      	}  
+	    </script>
+ 
     
     <!-- Google charts </body> -->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -38,7 +52,6 @@
       }
     </script>
     
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
@@ -62,8 +75,7 @@
       }
     </script>
     
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
+      <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
@@ -85,7 +97,7 @@
       }
     </script>
     
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
@@ -107,12 +119,6 @@
       }
     </script>
 
-    
-    
-    
-    
-  
-  
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -139,7 +145,8 @@
   </head>
 
   <body>
-
+  
+                   
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -149,7 +156,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">HexoSkin</a>
+          <a class="navbar-brand" href="index.jsp">HexoSkin</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -158,17 +165,6 @@
             <li><a href="#">About</a></li>
           </ul>
           <form class="navbar-form navbar-right">
-          
-            <span id="signinButton">
-			  <span
-			    class="g-signin"
-			    data-callback="signinCallback"
-			    data-clientid="799362622292-cisd7bgllvoo1pckcsm38smvl9ec1m60.apps.googleusercontent.com"
-			    data-cookiepolicy="single_host_origin"
-			    data-requestvisibleactions="http://schemas.google.com/AddActivity"
-			    data-scope="https://www.googleapis.com/auth/plus.login">
-			  </span>
-			</span>
 
           </form>
         </div>
@@ -180,7 +176,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview</a></li>
-            <li><a href="#">Analyser séance</a></li>
+            <li><a href="compare.jsp">Comparer Séances</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Export</a></li>
           </ul>
@@ -191,15 +187,11 @@
             <li><a href="">Another nav item</a></li>
             <li><a href="">More navigation</a></li>
           </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-          </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Dashboard</h1>
            <h3>Dernière séance : 28.04.2014</h3>
+
 <br>
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
@@ -211,7 +203,7 @@
 			<div id="chart_div2" style="width: 300px; height: 250px;"></div>
 
               <h4>Accélération</h4>
-              <span class="text-muted">Vitesse km/h</span>
+              <span class="text-muted"></span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
               <div id="chart_div3" style="width: 300px; height: 250px;"></div>
@@ -258,6 +250,20 @@
         </div>
       </div>
     </div>
+    
+    
+			<span id="signinButton" style="display:none">
+			  <span
+			    class="g-signin"
+			    data-callback="signinCallback"
+			    data-clientid="799362622292-cisd7bgllvoo1pckcsm38smvl9ec1m60.apps.googleusercontent.com"
+			    data-cookiepolicy="single_host_origin"
+			    data-requestvisibleactions="http://schemas.google.com/AddActivity"
+			    data-scope="https://www.googleapis.com/auth/plus.login">
+			  </span>
+			</span>
+    
+    
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -265,5 +271,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="bootstrap-3.1.1/dist/js/bootstrap.min.js"></script>
     <script src="bootstrap-3.1.1/docs/assets/js/docs.min.js"></script>
+    
+	<script type="text/javascript">
+     signinCallback(authResult);
+    </script>
+    
   </body>
 </html>

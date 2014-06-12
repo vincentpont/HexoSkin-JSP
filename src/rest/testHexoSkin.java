@@ -1,3 +1,4 @@
+package rest;
 
 public class testHexoSkin {
 
@@ -6,7 +7,7 @@ public class testHexoSkin {
 		 String username = "athlete@hexoskin.com";
 		 String password = "hexoskin";
 		 String urlAllData = "https://api.hexoskin.com/api/v1/datatype/";
-		 String urlDataFiltered = "https://api.hexoskin.com/api/v1/datatype/36/";
+		 String urlDataFiltered = "https://api.hexoskin.com/api/v1/datatype/37/";
 		 
 		 
 		 // Get Data from api 
