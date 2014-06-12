@@ -223,8 +223,8 @@
 
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<div class="row">
-					<h1 class="page-header">Comparatif séances</h1>
-					<h3>Choisissez deux séances à comparer :</h3>
+					<h1 class="page-header">Affichage map</h1>
+					<h3>Choisissez une séance à afficher</h3>
 
 					<div class="col-md-6">
 						Séance du <select class="form-control">
@@ -234,19 +234,9 @@
 						</select>
 
 <br>
-						<div id="chart_div1" style="width: 500px; height: 400px;"></div>
-						<div id="chart_div2" style="width: 500px; height: 400px;"></div>
-					</div>
-					<div class="col-md-6">
-					Séance du <select class="form-control">
-						<option>28.05.2014</option>
-						<option>30.05.2014</option>
-						<option>5.06.2014</option>
-					</select>
-<br>
 
-					<div id="chart_div3" style="width: 500px; height: 400px;"></div>
-					<div id="chart_div4" style="width: 500px; height: 400px;"></div>
+
+
 					</div>
 				</div>
 			</div>

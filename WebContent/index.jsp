@@ -177,7 +177,7 @@
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview</a></li>
             <li><a href="compare.jsp">Comparer Séances</a></li>
-            <li><a href="#">Analytics</a></li>
+            <li><a href="map.jsp">Carte</a></li>
             <li><a href="#">Export</a></li>
           </ul>
           <ul class="nav nav-sidebar">
