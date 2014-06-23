@@ -1,4 +1,5 @@
 package rest;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -10,6 +11,11 @@ import java.io.InputStream;
 
 
 
+
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import net.smartam.leeloo.client.request.OAuthClientRequest;
 
@@ -25,6 +31,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
 /*
  * Author : Pont Vincent
@@ -37,7 +47,8 @@ public class RestInvoker  {
 	
 	private String username ;
 	private String password ;
-	private String url ;
+	private String url;
+	private JSONObject json;
 
 	
 	public RestInvoker(String username, String password, String url) {
@@ -46,53 +57,62 @@ public class RestInvoker  {
 		this.url = url;
 	}
 
-
-	public  String getASCIIContentFromEntity(HttpEntity entity)
-			throws IllegalStateException, IOException {
-
-		InputStream in = entity.getContent();
-
-		StringBuffer out = new StringBuffer();
-		int n = 1;
-		while (n > 0) {
-			byte[] b = new byte[4096];
-			n = in.read(b);
-
-			if (n > 0)
-				out.append(new String(b, 0, n));
-		}
-
-		return out.toString();
-	}
 	
-	// GET = on reçoit un string
-	public String getData() {
+	// Get data in JSON
+	public JSONObject getJSONData(){
 		
-		CredentialsProvider provider = new BasicCredentialsProvider();
-		UsernamePasswordCredentials credentials = new UsernamePasswordCredentials(this.username, this.password);
-		provider.setCredentials(AuthScope.ANY, credentials);
-		HttpClient client = HttpClientBuilder.create().setDefaultCredentialsProvider(provider).build();
+	try {
+		 
+		URL url = new URL(this.url);
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("Accept", "application/json");
 		
-		HttpContext localContext = new BasicHttpContext();
-		String result = "";
-		HttpGet request = new HttpGet(this.url);
+		String userpass = username + ":" + password;
+		String basicAuth = "Basic " + new String(new Base64().encode(userpass.getBytes()));
+		conn.setRequestProperty ("Authorization", basicAuth);
+		
 
+		if (conn.getResponseCode() != 200) {
+			throw new RuntimeException("Failed : HTTP error code : "
+					+ conn.getResponseCode());
+		}
+ 
+		BufferedReader br = new BufferedReader(new InputStreamReader(
+			(conn.getInputStream())));
+		
+		String jsonText = readAll(br);
+		
+		 
 		try {
-			HttpResponse response = client.execute(request, localContext);
-
+			this.json = new JSONObject(jsonText);
 			
-			HttpEntity entity = response.getEntity();
-
-			result = getASCIIContentFromEntity(entity);
-
-		} catch (Exception e) {
-			return  e.getLocalizedMessage();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		return result;
-		
+			 
+		// Disconnect
+		conn.disconnect();
+ 
+
+ 
+	  } catch (IOException e) {
+ 
+		e.printStackTrace();
+ 
+	  }
+	return json;
+	
 	}
 	
+	  private String readAll(Reader rd) throws IOException {
+		    StringBuilder sb = new StringBuilder();
+		    int cp;
+		    while ((cp = rd.read()) != -1) {
+		      sb.append((char) cp);
+		    }
+		    return sb.toString();
+		  }
 	
-
 }
