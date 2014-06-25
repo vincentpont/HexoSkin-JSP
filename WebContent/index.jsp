@@ -4,6 +4,10 @@
 <html lang="en">
   <head>
   
+  <!-- Example import class -->
+  <%@ page import="restDatastore.AppConstants" %>
+  
+  
         <!-- Placez ce script JavaScript asynchrone juste devant votre balise </body> -->
 	    <script type="text/javascript">
 	      (function() {

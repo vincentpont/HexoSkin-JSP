@@ -4,29 +4,46 @@
 <html lang="en">
 <head>
 
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
-    <style type="text/css">
-      html { height: 100% }
-      body { height: 100%; margin: 0; padding: 0 }
-      #map-canvas { height: 100% }
-    </style>
-    
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgKlIojTn5KD-YJVnGkd71L3CSknfnKAA">
+
+<script
+   
+    src="https://maps.googleapis.com/maps/api/js?v=3?key={AIzaSyA9MSARpM9GdjunV4sR5mxpOuD3pfkyldc}">
     </script>
-    
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8
-        };
-        var map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+<script>
+var map;
+function initialize() {
+	var mapOptions = {
+		    zoom: 3,
+		    center: new google.maps.LatLng(0, -180),
+		    mapTypeId: google.maps.MapTypeId.TERRAIN
+		  };
+
+		  var map = new google.maps.Map(document.getElementById('map-canvas'),
+		      mapOptions);
+
+		  var flightPlanCoordinates = [
+		    new google.maps.LatLng(37.772323, -122.214897),
+		    new google.maps.LatLng(21.291982, -157.821856),
+		    new google.maps.LatLng(-18.142599, 178.431),
+		    new google.maps.LatLng(-27.46758, 153.027892)
+		  ];
+		  var flightPath = new google.maps.Polyline({
+		    path: flightPlanCoordinates,
+		    geodesic: true,
+		    strokeColor: '#FF0000',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 2
+		  });
+
+		  flightPath.setMap(map);
+		}
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
 
 
 <!-- Placez ce script JavaScript asynchrone juste devant votre balise </body> -->
@@ -260,12 +277,14 @@
 
 <br>
 
-    <div id="map-canvas"></div>
+			 <div id="map-canvas" style="height:600px; width:1000px"></div>
 
 
 					</div>
 				</div>
 			</div>
+			    
+			    
 
 
 			<br> <span id="signinButton" style="display: none"> <span
@@ -275,7 +294,7 @@
 				data-requestvisibleactions="http://schemas.google.com/AddActivity"
 				data-scope="https://www.googleapis.com/auth/plus.login"> </span>
 			</span>
-
+			
 
 
 			<!-- Bootstrap core JavaScript

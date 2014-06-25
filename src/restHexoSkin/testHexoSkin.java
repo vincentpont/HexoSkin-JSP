@@ -1,4 +1,4 @@
-package rest;
+package restHexoSkin;
 
 import java.io.UnsupportedEncodingException;
 
@@ -23,24 +23,25 @@ public class testHexoSkin {
 
 	public static void main(String[] args) {
 
-		 String username = "athlete@hexoskin.com";
-		 String password = "hexoskin";
-		 //String urlAllData = "https://api.hexoskin.com/api/v1/datatype/";
-		 String url = "https://api.hexoskin.com/api/v1/datatype/37/";
+		 String username = "vincentpont@gmail.com";
+		 String password = "looser88";
+		 String urlAllData = "https://api.hexoskin.com/api/v1/datatype/";
+		 String url = "https://api.hexoskin.com/api/v1/datatype/52/";
 		 
 		 
-		RestInvoker rest =  new RestInvoker(username,password,url);
+		RestInvokerHexo rest =  new RestInvokerHexo(username,password,url);
 		JSONObject json = new JSONObject();
 		json = rest.getJSONData();
 		
+		
 		try {
-			System.out.println(json.getString("dataid"));
+			System.out.println(json.getString("info"));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		  
-		
+		System.out.println(json.toString());
 	}
 	
 
