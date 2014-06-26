@@ -1,46 +1,42 @@
 package restDatastore;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import java.util.Iterator;
+import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import restHexoSkin.RestInvokerHexo;
-
 public class testDatastore {
 
-	public static void main(String[] args) throws UnsupportedEncodingException {
+	public static void main(String[] args) throws UnsupportedEncodingException, JSONException {
+		 	 
+		RestInvokerDatastore rest =  new RestInvokerDatastore();
 
-		 String username = "vincentpont@gmail.com";
-		 String password = "volcom888";
-		 String email = "vincentpont@gmail.com";
-	     String date = "2014.06.25.17:39" ;
-		 
-	     // Create url and encode
-		 String url = "https://logical-light-564.appspot.com/_ah/api/helloworld/v1/jsonobject/"
-		 + URLEncoder.encode(email, "UTF-8") +"/"+URLEncoder.encode(date, "UTF-8");
-		 
-		 
-		RestInvokerHexo rest =  new RestInvokerHexo(username,password,url);
-		JSONObject json = new JSONObject();
-		json = rest.getJSONData();
-		
 		System.out.println("Data from entity newSeance :");
+		System.out.println("");
 		
-		try {
-			
-			System.out.println(json.getString("Time"));
-			System.out.println(json.getString("Calories"));
-			System.out.println(json.getString("Email"));
-			System.out.println(json.getString("Date"));
-			System.out.println(json.getString("Distance"));
-			System.out.println(json.getString("MeterMin"));
-			
-			
-		} catch (JSONException e) {
-			e.printStackTrace();
+		/*
+		JSONObject json = rest.getDataWorkoutByEmailAndDate("2014.06.25.17:39","vincentpont@gmail.com");
+		System.out.println(json.toString());
+		*/
+		
+		
+		List list = rest.getAllWorkoutByEmail("vincentpont@gmail.com");
+	    //System.out.println(json.toString());
+
+		Iterator<String> iterator = list.iterator();
+		while (iterator.hasNext()) {
+			System.out.println(iterator.next());
 		}
+		
+
+		/*
+		JSONObject json = rest.getAllWorkoutDates("vincentpont@gmail.com");
+	    System.out.println(json.toString());
+		*/
+
 		
 	}
 

@@ -60,15 +60,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <script>
 	function signinCallback(authResult) {
-		if (authResult['access_token']) {
-			// Logged
-
-		} else if (authResult['error']) {
-			document.getElementById('signinButton').setAttribute('style',
-					'display: none');
-			alert("Error, not logged.");
-			window.location = "login.jsp";
-		}
+  	  if (authResult['access_token']) {
+  		// Logged
+  	  } else if (authResult['error']) {
+    	document.getElementById('signinButton').setAttribute('style', 'display: none');
+  		window.location = "login.jsp";
+  	  }
 	}
 </script>
 
@@ -236,7 +233,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Dashboard</a></li>
 					<li><a href="#">Profile</a></li>
 					<li><a href="#">About</a></li>
 				</ul>
@@ -248,19 +244,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
-				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#">Overview</a></li>
-					<li><a href="compare.jsp">Comparer Séances</a></li>
-					<li><a href="map.jsp">Carte</a></li>
-					<li><a href="#">Export</a></li>
-				</ul>
-				<ul class="nav nav-sidebar">
-					<li><a href="">Nav item</a></li>
-					<li><a href="">Nav item again</a></li>
-					<li><a href="">One more nav</a></li>
-					<li><a href="">Another nav item</a></li>
-					<li><a href="">More navigation</a></li>
-				</ul>
+	          <ul class="nav nav-sidebar">
+	            <li><a href="index.jsp">Dashboard</a></li>
+	            <li><a href="compare.jsp">Comparer Séances</a></li>
+	            <li class="active"><a href="map.jsp">Carte</a></li>
+            <li><a href="historique.jsp">Historiques</a></li>
+	          </ul>
 			</div>
 
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

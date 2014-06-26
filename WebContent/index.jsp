@@ -4,10 +4,6 @@
 <html lang="en">
   <head>
   
-  <!-- Example import class -->
-  <%@ page import="restDatastore.AppConstants" %>
-  
-  
         <!-- Placez ce script JavaScript asynchrone juste devant votre balise </body> -->
 	    <script type="text/javascript">
 	      (function() {
@@ -20,11 +16,9 @@
 	    <script>
         function signinCallback(authResult) {
       	  if (authResult['access_token']) {
-      		alert("You'r logged.");
-      	    
+      		// Logged
       	  } else if (authResult['error']) {
         	document.getElementById('signinButton').setAttribute('style', 'display: none');
-      		alert("Error, not logged.");
       		window.location = "login.jsp";
       	  }
       	}  
@@ -164,7 +158,6 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">About</a></li>
           </ul>
@@ -179,17 +172,10 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview</a></li>
+	            <li class="active"><a href="index.jsp">Dashboard</a></li>
             <li><a href="compare.jsp">Comparer Séances</a></li>
             <li><a href="map.jsp">Carte</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
+            <li><a href="historique.jsp">Historiques</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -221,36 +207,6 @@
             </div>
           </div>
 
-          <h2 class="sub-header">Historiques Séances</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Distance</th>
-                  <th>Time</th>
-                  <th>Calories burned</th>
-                  <th>Avg m/min</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>12.05.2014</td>
-                  <td>1200 m</td>
-                  <td>10:01</td>
-                  <td>600 ca</td>
-                  <td>50 m/min</td>
-                </tr>
-                <tr>
-                  <td>20.05.2014</td>
-                  <td>2000 m</td>
-                  <td>45:01</td>
-                  <td>800 ca</td>
-                  <td>100 m/min</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
       </div>
     </div>
