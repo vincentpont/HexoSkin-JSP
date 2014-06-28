@@ -192,6 +192,7 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Profile</a></li>
+					<li><a href="javascript:logout();">Logout</a></li>
 					<li><a href="#">About</a></li>
 				</ul>
 				<form class="navbar-form navbar-right"></form>
@@ -238,6 +239,20 @@
 					<div id="chart_div4" style="width: 500px; height: 400px;"></div>
 					</div>
 				</div>
+			</div>
+			
+		</div>
+	</div>	
+	
+			
+			
+			<div class="container">
+				<hr> 
+				<footer>
+			    	<p>
+					<b>Copyright ©2014 HexoSkin Travail bachelor. Tous droits réservés.</b>
+			        </p>
+				</footer>
 			</div>
 
 

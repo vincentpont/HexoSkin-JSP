@@ -53,19 +53,23 @@ public class RestInvokerHexo  {
 	private String url;
 	private JSONObject json;
 	private Timestamp ts = new Timestamp(new Date().getTime());
-	private final String signature = DigestUtils.shaHex("eRYvgaB3dhoZKdHNejkMjt5YJU8nOwEg38zC9qhc");
+	private String userpass;
+	private String basicAuth;
+	
+	// Transform string of Sha1
+	private final String signature = DigestUtils.shaHex("zmKunuuIZBYnY79ikyecwrhyPxZxFfARt9ONCbIc");
 
 	public RestInvokerHexo(String username, String password, String url) {
 		this.username = username;
 		this.password = password;
 		this.url = url;
+		userpass = username + ":" + password;
+		basicAuth = "Basic " + new String(new Base64().encode(userpass.getBytes()));
 	}
 	
 	// Get data in JSON
 	public JSONObject getJSONData(){
 		
-		String userpass = username + ":" + password;
-		String basicAuth = "Basic " + new String(new Base64().encode(userpass.getBytes()));
 			
 	try {
 		 
@@ -75,11 +79,10 @@ public class RestInvokerHexo  {
 		conn.setRequestProperty("Accept", "application/json");
 		conn.setRequestProperty ("Authorization", basicAuth);
 		
-		// Key, timestanp, url
-		conn.setRequestProperty("Application" , "hevs");
-		conn.setRequestProperty("X-HEXOAPIKEYs", "2jFapFt1a3LYsBTM");
-		conn.setRequestProperty("X-HEXOTIMESTAMPs", ts.toString());
-		conn.setRequestProperty("X-HEXOAPISIGNATUREs", signature);
+		// Key, timestamp, signature
+		//conn.setRequestProperty("X-HEXOAPIKEY", "4QL3vPdCjSE6mJL2");
+		//conn.setRequestProperty("X-HEXOTIMESTAMP", ts.toString());
+		//conn.setRequestProperty("X-HEXOAPISIGNATURE", signature);
 
 
 

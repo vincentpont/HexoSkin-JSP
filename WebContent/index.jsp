@@ -72,29 +72,7 @@
         chart.draw(data, options);
       }
     </script>
-    
-      <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]
-        ]);
 
-        var options = {
-          title: 'Company Performance',
-          hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
-        };
-
-        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
-        chart.draw(data, options);
-      }
-    </script>
-    
 
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
@@ -112,7 +90,7 @@
           title: 'Company Performance'
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div4'));
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div3'));
         chart.draw(data, options);
       }
     </script>
@@ -159,6 +137,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Profile</a></li>
+			<li><a href="javascript:logout();">Logout</a></li>
             <li><a href="#">About</a></li>
           </ul>
           <form class="navbar-form navbar-right">
@@ -178,38 +157,66 @@
             <li><a href="historique.jsp">Historiques</a></li>
           </ul>
         </div>
+        
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
+          <h1 class="page-header">Données de base</h1>
            <h3>Dernière séance : 28.04.2014</h3>
 
 <br>
+          <div class="row row">
+            <div class="col-md-1">Durée : </div>
+          
+            <div class="col-md-1">Distance : </div>
+      
+            <div class="col-md-1">Calories : </div>
+   
+            <div class="col-md-1">Vitesse : </div>
+
+            <div class="col-md-1">Mètre/min : </div>
+         
+            <div class="col-md-1">Steps : </div>
+                  
+            <div class="col-md-1">Pulsation : </div>
+
+       </div> 
+    </div>
+    
+    
+        
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Graphiques</h1>
+
+<br>
           <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div id="chart_div1" style="width: 300px; height: 250px;"></div>
+            <div class="col-xs-6">
+              <div id="chart_div1" style="width: 600px; height: 400px;"></div>
               <h4>Performance</h4>
               <span class="text-muted">ECG / Respiration</span>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-			<div id="chart_div2" style="width: 300px; height: 250px;"></div>
+            <div class="col-xs-6">
+			<div id="chart_div2" style="width: 600px; height: 400px;"></div>
 
               <h4>Accélération</h4>
               <span class="text-muted"></span>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <div id="chart_div3" style="width: 300px; height: 250px;"></div>
-              <h4>Vitesse moyenne</h4>
-              <span class="text-muted">m/min</span>
-            </div>
-			<div class="col-xs-6 col-sm-3 placeholder">
-              <div id="chart_div4" style="width: 300px; height: 250px;"></div>
-              <h4>Dénivelé</h4>
-              <span class="text-muted">% pente</span>
-            </div>
+
           </div>
+          
+          
 
         </div>
+        
       </div>
     </div>
+    
+    			<div class="container">
+				<hr> 
+				<footer>
+			    	<p>
+					<b>Copyright ©2014 HexoSkin Travail bachelor. Tous droits réservés.</b>
+			        </p>
+				</footer>
+			</div>
     
     
 			<span id="signinButton" style="display:none">

@@ -234,6 +234,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Profile</a></li>
+					<li><a href="javascript:logout();">Logout</a></li>
 					<li><a href="#">About</a></li>
 				</ul>
 				<form class="navbar-form navbar-right"></form>
@@ -266,11 +267,27 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <br>
 
-			 <div id="map-canvas" style="height:600px; width:1000px"></div>
+			 <div id="map-canvas" style="height:500px; width:800px"></div>
 
 
 					</div>
 				</div>
+				
+
+			</div>
+			
+			
+			</div>
+			
+			</div>
+
+			<div class="container">
+				<hr> 
+				<footer>
+			    	<p>
+					<b>Copyright ©2014 HexoSkin Travail bachelor. Tous droits réservés.</b>
+			        </p>
+				</footer>
 			</div>
 			    
 			    
@@ -297,5 +314,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			<script type="text/javascript">
 				signinCallback(authResult);
 			</script>
+			
+	
 </body>
 </html>

@@ -326,6 +326,17 @@
 		</div>
 	</div>
 	
+
+	
+				<div class="container" style="margin-top:400px;">
+				<hr> 
+				<footer>
+			    	<p>
+					<b>Copyright ©2014 HexoSkin Travail bachelor. Tous droits réservés.</b>
+			        </p>
+				</footer>
+			</div>
+	
 	<span id="signin-button" style="display:none">
      <span class="g-signin" data-callback="loginFinishedCallback"
       data-approvalprompt="force"

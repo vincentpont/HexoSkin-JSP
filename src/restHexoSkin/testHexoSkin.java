@@ -22,24 +22,18 @@ import java.net.URL;
 public class testHexoSkin {
 
 	public static void main(String[] args) {
-
-		 String username = "vincentpont@gmail.com";
-		 String password = "looser88";
+		 String username = "bruno.alves@hevs.ch";
+		 String password = "$hes-so2014!";
 		 String urlAllData = "https://api.hexoskin.com/api/v1/datatype/";
-		 String url = "https://api.hexoskin.com/api/v1/datatype/52/";
+		 String url = "https://api.hexoskin.com/api/v1/data/?datatype=19&record=35610";
 		 
 		 
-		RestInvokerHexo rest =  new RestInvokerHexo(username,password,url);
+		RestInvokerHexo rest =  new RestInvokerHexo(username, password, url);
 		JSONObject json = new JSONObject();
 		json = rest.getJSONData();
 		
 		
-		try {
-			System.out.println(json.getString("info"));
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		  
 		System.out.println(json.toString());
 	}
