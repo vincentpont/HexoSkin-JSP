@@ -4,12 +4,15 @@
 <html lang="en">
 <head>
 
+
 <!-- Import restInvoker class -->
 <%@ page import="restDatastore.RestInvokerDatastore"%>
 <%@ page import="java.util.Iterator, java.util.List"%>
 
   <script src="https://apis.google.com/js/plusone.js" type="text/javascript"></script>
   <script src="https://apis.google.com/js/client:plusone.js" type="text/javascript"></script>
+  
+  <script src="bootstrap-3.1.1/js/sorttable.js"></script>
   
   <script type="text/javascript">
   /*
@@ -277,7 +280,7 @@
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">Historiques Séances</h1>
 				<div class="table-responsive">
-					<table class="table table-striped">
+					<table class="table table-striped sortable">
 						<thead>
 							<tr>
 								<th>Date</th>
@@ -328,7 +331,7 @@
 	
 
 	
-				<div class="container" style="margin-top:400px;">
+				<div class="container" style="margin-top:370px;">
 				<hr> 
 				<footer>
 			    	<p>

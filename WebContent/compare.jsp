@@ -4,6 +4,10 @@
 <html lang="en">
 <head>
 
+<!-- Import restInvoker class -->
+<%@ page import="restDatastore.RestInvokerDatastore"%>
+<%@ page import="java.util.Iterator, java.util.List"%>
+
 <!-- Placez ce script JavaScript asynchrone juste devant votre balise </body> -->
 <script type="text/javascript">
 	(function() {
@@ -146,7 +150,15 @@
 </script>
 
 
+<script>
 
+function logout() {
+	  // A AMELIORER EN PRODUCTION
+	  //document.location.href = "https://accounts.google.com/Logout?service=profiles&continue=http://localhost:8080/HexoSkin-JSP/index.jsp";
+    document.location.href = "https://accounts.google.com/Logout?service=profiles";
+	  //window.location = "login.jsp";
+	  }
+</script>
 
 
 <meta charset="utf-8">
@@ -214,25 +226,75 @@
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<div class="row">
 					<h1 class="page-header">Comparatif séances</h1>
+<br>
 					<h3>Choisissez deux séances à comparer :</h3>
+				
+				    <%
+					RestInvokerDatastore rest =  new RestInvokerDatastore();
+					List listDates1 = rest.getAllWorkoutDates("vincentpont@gmail.com");
+					Iterator<String> iterator1 = listDates1.iterator();
+					%>
 
 					<div class="col-md-6">
-						Séance du <select class="form-control">
-							<option>28.05.2014</option>
-							<option>30.05.2014</option>
-							<option>5.06.2014</option>
-						</select>
+						Séance du 										
+				    <select name="listDates1" class="form-control">
+					    <%while (iterator1.hasNext()){%>
+					        <option><%out.print(iterator1.next());%></option>
+					    <%}%>
+					</select>
+<br>
+<br>		
+				    <h3>Données de bases</h3>
+				    
+		<div class="row row">
+            <div class="col-md-1">Durée  </div>
+            <div class="col-md-1">Distance  </div>
+            <div class="col-md-1">Calories  </div>
+            <div class="col-md-1">Vitesse  </div>
+            <div class="col-md-1">Mètre/min  </div>
+            <div class="col-md-1">Steps  </div>    
+            <div class="col-md-1">Pulsation  </div>
 
+       </div> 
+<br>
+<br>
+				    <h3>Graphiques </h3>
 <br>
 						<div id="chart_div1" style="width: 500px; height: 400px;"></div>
 						<div id="chart_div2" style="width: 500px; height: 400px;"></div>
 					</div>
 					<div class="col-md-6">
-					Séance du <select class="form-control">
-						<option>28.05.2014</option>
-						<option>30.05.2014</option>
-						<option>5.06.2014</option>
+					Séance du 
+					
+					<%
+					List listDates2 = rest.getAllWorkoutDates("vincentpont@gmail.com");
+					Iterator<String> iterator2 = listDates2.iterator();
+					%>
+				
+					
+					<select name="listDates2" class="form-control">
+					    <%while (iterator2.hasNext()){%>
+					        <option><%out.print(iterator2.next());%></option>
+					    <%}%>
 					</select>
+<br>
+<br>							
+				    <h3>Données de bases</h3>
+				    
+		<div class="row row">
+            <div class="col-md-1">Durée  </div>
+            <div class="col-md-1">Distance  </div>
+            <div class="col-md-1">Calories </div>
+            <div class="col-md-1">Vitesse  </div>
+            <div class="col-md-1">Mètre/min  </div>
+            <div class="col-md-1">Steps  </div>   
+            <div class="col-md-1">Pulsation  </div>
+
+       </div> 
+<br>
+<br>       
+				    <h3>Graphiques </h3>
+					
 <br>
 
 					<div id="chart_div3" style="width: 500px; height: 400px;"></div>

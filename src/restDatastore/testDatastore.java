@@ -22,7 +22,7 @@ public class testDatastore {
 		System.out.println(json.toString());
 		*/
 		
-		
+		/*
 		List list = rest.getAllWorkoutByEmail("vincentpont@gmail.com");
 	    //System.out.println(json.toString());
 
@@ -30,12 +30,15 @@ public class testDatastore {
 		while (iterator.hasNext()) {
 			System.out.println(iterator.next());
 		}
-		
-
-		/*
-		JSONObject json = rest.getAllWorkoutDates("vincentpont@gmail.com");
-	    System.out.println(json.toString());
 		*/
+
+		
+		List list = rest.getAllWorkoutDates("vincentpont@gmail.com");
+		
+		Iterator<String> iterator = list.iterator();
+		while (iterator.hasNext()) {
+			System.out.println(iterator.next());
+		}
 
 		
 	}

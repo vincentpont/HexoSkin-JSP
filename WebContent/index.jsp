@@ -94,6 +94,16 @@
         chart.draw(data, options);
       }
     </script>
+    
+    <script>
+
+function logout() {
+	  // A AMELIORER EN PRODUCTION
+	  //document.location.href = "https://accounts.google.com/Logout?service=profiles&continue=http://localhost:8080/HexoSkin-JSP/index.jsp";
+    document.location.href = "https://accounts.google.com/Logout?service=profiles";
+	  //window.location = "login.jsp";
+	  }
+</script>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -163,7 +173,7 @@
            <h3>Dernière séance : 28.04.2014</h3>
 
 <br>
-          <div class="row row">
+          <div class="row">
             <div class="col-md-1">Durée : </div>
           
             <div class="col-md-1">Distance : </div>

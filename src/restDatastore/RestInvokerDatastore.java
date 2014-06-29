@@ -173,12 +173,14 @@ public class RestInvokerDatastore  {
 	 * @Param: String email
 	 * @Return: JSONObject containing a JSONArray with all the dates
 	 */
-	public JSONObject getAllWorkoutDates(String email ) throws UnsupportedEncodingException{
+	public List getAllWorkoutDates(String email ) throws UnsupportedEncodingException{
 		
 		// Create url request and encode email and date
 			String urlRequest = "https://logical-light-564.appspot.com/_ah/api/helloworld/v1/jsonobject/getAllWorkoutDates?Email="
 						+ URLEncoder.encode(email, "UTF-8");
 
+			List list = new ArrayList();
+			
 		try {
 			 
 			URL url = new URL(urlRequest);
@@ -215,7 +217,22 @@ public class RestInvokerDatastore  {
 	 
 		  }
 		
-		return json;
+	    JSONArray jsonMainArr;
+		try {
+			jsonMainArr = json.getJSONArray("Dates");
+
+	    for (int i = 0; i < jsonMainArr.length(); i++) {  
+	         JSONObject childJSONObject = jsonMainArr.getJSONObject(i);
+	         list.add(childJSONObject.getString("Date"));
+	         countRows++;
+	    }
+	    
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
 		
 	}
 	
