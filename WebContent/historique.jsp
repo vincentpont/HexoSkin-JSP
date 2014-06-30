@@ -258,9 +258,9 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Profile</a></li>
+					<li><a href="profile.jsp">Profile</a></li>
 					<li><a href="javascript:logout();">Logout</a></li>
-					<li><a href="#">About</a></li>
+					<li><a href="about.jsp">About</a></li>
 				</ul>
 				<form class="navbar-form navbar-right"></form>
 			</div>

@@ -1,6 +1,7 @@
 package restDatastore;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -32,14 +33,44 @@ public class testDatastore {
 		}
 		*/
 
-		
+		/*
 		List list = rest.getAllWorkoutDates("vincentpont@gmail.com");
 		
 		Iterator<String> iterator = list.iterator();
 		while (iterator.hasNext()) {
 			System.out.println(iterator.next());
 		}
+		*/
+										// 18               //36			// 55
+		String string = "46.298736572265625,46.29862976074219,46.298519134521484,46.29844665527344";
+		List<Double> listDouble = new ArrayList<Double>();
+		int j = 0;
+		int temp = 0 ;
 
+		for(int i  =  0 ; i < string.length() ; i++){
+			
+			j = temp;
+			
+			if(string.charAt(i) == ','){
+				
+				System.out.println("i :"+i +" j :"+j);
+				listDouble.add(Double.parseDouble(string.substring(j, i)));
+				System.out.println("Ajout :" + string.substring(j, i) );
+
+				temp  = i +1; 
+			}
+
+		}
+		// Add last latitude 
+		listDouble.add(Double.parseDouble(string.substring(j, string.length())));
+		
+		
+		// Affichage
+		System.out.println("liste:");
+		Iterator<Double> iterator = listDouble.iterator();
+		while (iterator.hasNext()) {
+			System.out.println(iterator.next());
+		}
 		
 	}
 

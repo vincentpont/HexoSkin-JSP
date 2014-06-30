@@ -203,9 +203,9 @@ function logout() {
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Profile</a></li>
+					<li><a href="profile.jsp">Profile</a></li>
 					<li><a href="javascript:logout();">Logout</a></li>
-					<li><a href="#">About</a></li>
+					<li><a href="about.jsp">About</a></li>
 				</ul>
 				<form class="navbar-form navbar-right"></form>
 			</div>
@@ -231,8 +231,8 @@ function logout() {
 				
 				    <%
 					RestInvokerDatastore rest =  new RestInvokerDatastore();
-					List listDates1 = rest.getAllWorkoutDates("vincentpont@gmail.com");
-					Iterator<String> iterator1 = listDates1.iterator();
+					List listDates1 = rest.getAllDatesWorkoutSorted("vincentpont@gmail.com");
+					Iterator iterator1 = listDates1.iterator();
 					%>
 
 					<div class="col-md-6">
@@ -267,8 +267,8 @@ function logout() {
 					Séance du 
 					
 					<%
-					List listDates2 = rest.getAllWorkoutDates("vincentpont@gmail.com");
-					Iterator<String> iterator2 = listDates2.iterator();
+					List listDates2 = rest.getAllDatesWorkoutSorted("vincentpont@gmail.com");
+					Iterator iterator2 = listDates2.iterator();
 					%>
 				
 					
