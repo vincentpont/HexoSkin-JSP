@@ -61,24 +61,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">HexoSkin</a>
-        </div>
-        <div class="navbar-collapse collapse">
-
-          <form class="navbar-form navbar-right">
-         
-
-          </form>
-        </div>
-      </div>
-    </div>
+				<a class="navbar-brand" href="index.jsp" style="font-size:18pt;">HexoSkin</a>
+			</div>
+			<div class="navbar-collapse collapse" style="font-size:18pt;">
+				
+				<form class="navbar-form navbar-right"></form>
+			</div>
+		</div>
+	</div>
 
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
+          <ul class="nav nav-sidebar" style="font-size:16pt;">
 	            <li class="active"><a href="index.jsp">Dashboard</a></li>
-            <li><a href="compare.jsp">Comparer Séances</a></li>
+            <li><a href="compare.jsp">Comparer</a></li>
             <li><a href="map.jsp">Carte</a></li>
             <li><a href="historique.jsp">Historiques</a></li>
           </ul>

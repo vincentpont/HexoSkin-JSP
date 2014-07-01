@@ -260,7 +260,6 @@ public class RestInvokerDatastore {
 			for (int i = 0; i < jsonMainArr.length(); i++) {
 				JSONObject childJSONObject = jsonMainArr.getJSONObject(i);
 				list.add(childJSONObject.getString("Date"));
-				countRows++;
 			}
 
 		} catch (JSONException e) {

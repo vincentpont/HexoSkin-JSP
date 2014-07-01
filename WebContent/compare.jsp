@@ -199,9 +199,9 @@ function logout() {
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.jsp">HexoSkin</a>
+				<a class="navbar-brand" href="index.jsp" style="font-size:18pt;">HexoSkin</a>
 			</div>
-			<div class="navbar-collapse collapse">
+			<div class="navbar-collapse collapse" style="font-size:18pt;">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="profile.jsp">Profile</a></li>
 					<li><a href="javascript:logout();">Logout</a></li>
@@ -215,9 +215,9 @@ function logout() {
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
-	          <ul class="nav nav-sidebar">
+	          <ul class="nav nav-sidebar" style="font-size:16pt;">
 	            <li><a href="index.jsp">Dashboard</a></li>
-	            <li class="active"><a href="compare.jsp">Comparer Séances</a></li>
+	            <li class="active"><a href="compare.jsp">Comparer</a></li>
 	            <li><a href="map.jsp">Carte</a></li>
             <li><a href="historique.jsp">Historiques</a></li>
 	          </ul>
@@ -225,10 +225,12 @@ function logout() {
 
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<div class="row">
-					<h1 class="page-header">Comparatif séances</h1>
+					<h1 class="page-header">Comparatif séances
+				    <span  style="font-size:30pt;" class="glyphicon glyphicon-eye-open"></span>
+					</h1>
 <br>
-					<h3>Choisissez deux séances à comparer :</h3>
-				
+					<h3>Choisissez deux séances à comparer</h3>
+<br>				
 				    <%
 					RestInvokerDatastore rest =  new RestInvokerDatastore();
 					List listDates1 = rest.getAllDatesWorkoutSorted("vincentpont@gmail.com");
@@ -236,26 +238,74 @@ function logout() {
 					%>
 
 					<div class="col-md-6">
-						Séance du 										
-				    <select name="listDates1" class="form-control">
+																
+				    <select name="listDates1" class="form-control" style="font-size:14pt;">
 					    <%while (iterator1.hasNext()){%>
 					        <option><%out.print(iterator1.next());%></option>
 					    <%}%>
 					</select>
 <br>
 <br>		
-				    <h3>Données de bases</h3>
+ <br>				    
 				    
-		<div class="row row">
-            <div class="col-md-1">Durée  </div>
-            <div class="col-md-1">Distance  </div>
-            <div class="col-md-1">Calories  </div>
-            <div class="col-md-1">Vitesse  </div>
-            <div class="col-md-1">Mètre/min  </div>
-            <div class="col-md-1">Steps  </div>    
-            <div class="col-md-1">Pulsation  </div>
+				<div class="row">
+				<div  title="Temps" class="col-md-2">
+					  <span  style="font-size:18pt;" class="glyphicon glyphicon-time"></span> 
+					  <span style="font-size:14pt; font-family:Verdana;"> &nbsp; <% out.print(0.0); %> </span>
+					 </div>
+
+					<div title="Distance" class="col-md-2">
+					<span  style="font-size:18pt;" class="glyphicon glyphicon-sort"></span> 
+					 <span style="font-size:14pt; font-family:Verdana;"> &nbsp;  <% out.print(0.0); %>  </span>
+					
+					</div>
+
+					<div title="Calories brûlées" class="col-md-2">
+					<span style="font-size:18pt;" class="glyphicon glyphicon-fire"></span>	
+					 <span style="font-size:14pt; font-family:Verdana;"> &nbsp; <% out.print(0.0); %> </span>
+					</div>
+
+					<div title="Vitesse moyenne" class="col-md-2">
+					<span style="font-size:18pt;" class="glyphicon glyphicon-flash"></span>	
+					 <span style="font-size:14pt; font-family:Verdana;">  <% out.print(0.0); %> </span>	
+					</div>
+					
+				    <div title="Mètre/min moyen" class="col-md-2">
+					<span style="font-size:18pt;" class="glyphicon glyphicon-signal"></span>	
+				    <span style="font-size:14pt; font-family:Verdana;"> &nbsp;<% out.print(0.0); %> </span>	
+					</div>
 
        </div> 
+ <br>      
+       				<div class="row" >
+				
+					<div title="Pulsation" class="col-md-2">
+					<span  style="font-size:18pt;" class="glyphicon glyphicon-heart"></span>						
+					<span style="font-size:14pt; font-family:Verdana;"> &nbsp;<% out.print(0.0);  %> </span>	
+					</div>
+
+					<div title="Steps" class="col-md-2">
+					<span style="font-size:18pt;" class="glyphicon glyphicon-road"></span>						
+				    <span style="font-size:14pt; font-family:Verdana;"> &nbsp; <% out.print(0.0);  %> </span>	
+					</div>
+					
+					<div title="Cadence Steps/min" class="col-md-2">
+					<span  style="font-size:18pt;" class="glyphicon glyphicon-stats"></span>						
+					<span style="font-size:14pt; font-family:Verdana;"> &nbsp;<%  out.print(0.0);  %> </span>	
+					</div>
+					
+					<div title="Breathing Rate" class="col-md-2">
+					<span  style="font-size:18pt;" class="glyphicon glyphicon-transfer"></span>						
+					<span style="font-size:14pt; font-family:Verdana;"> &nbsp;<% out.print(0.0);   %> </span>	
+					</div>
+					
+				    <div title="Minute Ventilation " class="col-md-2">
+					<span  style="font-size:18pt;" class="glyphicon glyphicon-sort-by-attributes"></span>						
+					<span style="font-size:14pt; font-family:Verdana;"> &nbsp;<%  out.print(0.0);  %>  </span>	
+					</div>
+					
+
+				</div>
 <br>
 <br>
 				    <h3>Graphiques </h3>
@@ -264,35 +314,82 @@ function logout() {
 						<div id="chart_div2" style="width: 500px; height: 400px;"></div>
 					</div>
 					<div class="col-md-6">
-					Séance du 
 					
-					<%
+					
+					<% // Récupère une liste de ttes les dates
 					List listDates2 = rest.getAllDatesWorkoutSorted("vincentpont@gmail.com");
 					Iterator iterator2 = listDates2.iterator();
 					%>
 				
 					
-					<select name="listDates2" class="form-control">
+					<select name="listDates2" class="form-control" style="font-size:14pt;">
 					    <%while (iterator2.hasNext()){%>
 					        <option><%out.print(iterator2.next());%></option>
 					    <%}%>
 					</select>
 <br>
 <br>							
-				    <h3>Données de bases</h3>
+<br>				    
 				    
-		<div class="row row">
-            <div class="col-md-1">Durée  </div>
-            <div class="col-md-1">Distance  </div>
-            <div class="col-md-1">Calories </div>
-            <div class="col-md-1">Vitesse  </div>
-            <div class="col-md-1">Mètre/min  </div>
-            <div class="col-md-1">Steps  </div>   
-            <div class="col-md-1">Pulsation  </div>
+				<div class="row">
+				<div  title="Temps" class="col-md-2">
+					  <span style="font-size:18pt;" class="glyphicon glyphicon-time"></span> 
+					  <span style="font-size:14pt; font-family:Verdana;"> &nbsp; <% out.print(0.0); %> </span>
+					 </div>
+
+					<div title="Distance" class="col-md-2">
+					 <span style="font-size:18pt;" class="glyphicon glyphicon-sort"></span> 
+					 <span style="font-size:14pt; font-family:Verdana;"> &nbsp;  <% out.print(0.0); %>  </span>
+					
+					</div>
+
+					<div title="Calories brûlées" class="col-md-2">
+					 <span style="font-size:18pt;" class="glyphicon glyphicon-fire"></span>	
+					 <span style="font-size:14pt; font-family:Verdana;"> &nbsp; <% out.print(0.0); %> </span>
+					</div>
+
+					<div title="Vitesse moyenne" class="col-md-2">
+					 <span style="font-size:18pt;" class="glyphicon glyphicon-flash"></span>	
+					 <span style="font-size:14pt; font-family:Verdana;">  <% out.print(0.0); %> </span>	
+					</div>
+					
+				    <div title="Mètre/min moyen" class="col-md-2">
+					<span style="font-size:18pt;" class="glyphicon glyphicon-signal"></span>	
+				    <span style="font-size:14pt; font-family:Verdana;"> &nbsp;<% out.print(0.0); %> </span>	
+					</div>
 
        </div> 
+ <br>      
+       				<div class="row" >
+				
+					<div title="Pulsation" class="col-md-2">
+					<span  style="font-size:18pt;" class="glyphicon glyphicon-heart"></span>						
+					<span style="font-size:14pt; font-family:Verdana;"> &nbsp;<% out.print(0.0);  %> </span>	
+					</div>
+
+					<div title="Steps" class="col-md-2">
+					<span style="font-size:18pt;" class="glyphicon glyphicon-road"></span>						
+				    <span style="font-size:14pt; font-family:Verdana;"> &nbsp; <% out.print(0.0);  %> </span>	
+					</div>
+					
+					<div title="Cadence Steps/min" class="col-md-2">
+					<span  style="font-size:18pt;" class="glyphicon glyphicon-stats"></span>						
+					<span style="font-size:14pt; font-family:Verdana;"> &nbsp;<%  out.print(0.0);  %> </span>	
+					</div>
+					
+					<div title="Breathing Rate" class="col-md-2">
+					<span  style="font-size:18pt;" class="glyphicon glyphicon-transfer"></span>						
+					<span style="font-size:14pt; font-family:Verdana;"> &nbsp;<% out.print(0.0);   %> </span>	
+					</div>
+					
+				    <div title="Minute Ventilation " class="col-md-2">
+					<span  style="font-size:18pt;" class="glyphicon glyphicon-sort-by-attributes"></span>						
+					<span style="font-size:14pt; font-family:Verdana;"> &nbsp;<%  out.print(0.0);  %>  </span>	
+					</div>
+				</div>
 <br>
-<br>       
+<br>	
+				
 				    <h3>Graphiques </h3>
 					
 <br>

@@ -114,29 +114,6 @@
 	}
 </script>
 
-<script type='text/javascript'>
-      google.load('visualization', '1', {packages:['gauge']});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Label', 'Value'],
-          ['Vitesse', 25],
-
-        ]);
-
-        var options = {
-          width: 400, height: 120,
-          greenFrom: 05, greenTo: 10,
-          yellowFrom: 10, yellowTo: 15,
-          redFrom:15, redTo: 25,
-          min : 0 , max : 40,
-          minorTicks: 5
-        };
-
-        var chart = new google.visualization.Gauge(document.getElementById('chart_div4'));
-        chart.draw(data, options);
-      }
-    </script>
 
 
 <script>
@@ -186,9 +163,9 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.jsp">HexoSkin</a>
+				<a class="navbar-brand" href="index.jsp" style="font-size:18pt;">HexoSkin</a>
 			</div>
-			<div class="navbar-collapse collapse">
+			<div class="navbar-collapse collapse" style="font-size:18pt;">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="profile.jsp">Profile</a></li>
 					<li><a href="javascript:logout();">Logout</a></li>
@@ -202,9 +179,9 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
-				<ul class="nav nav-sidebar">
+				<ul class="nav nav-sidebar" style="font-size:16pt;">
 					<li class="active"><a href="index.jsp">Dashboard</a></li>
-					<li><a href="compare.jsp">Comparer Séances</a></li>
+					<li><a href="compare.jsp">Comparer</a></li>
 					<li><a href="map.jsp">Carte</a></li>
 					<li><a href="historique.jsp">Historiques</a></li>
 				</ul>
@@ -222,38 +199,82 @@
 			%>
 
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">Données de base</h1>
-				<h3>Dernière séance : <% out.print(lastWorkout.substring(0, 10));  %> à <% out.print(lastWorkout.substring(11, 16)); %></h3>
+				<h1 class="page-header">Dernière séance</h1>
+<br>
+				<h3>
+					  <span  style="font-size:25pt;" class="glyphicon glyphicon-calendar"></span>  &nbsp;
+					  <span style="font-size:18pt;" > <% out.print(lastWorkout.substring(0, 10));  %> à  <% out.print(lastWorkout.substring(11, 16));  %>  </span>
+				</h3>
+				
+<br>
+<br>
+				<div class="row" >
+				
+					<div  title="Temps" class="col-md-2">
+					  <span  style="font-size:25pt;" class="glyphicon glyphicon-time"></span> 
+					  <span style="font-size:18pt; font-family:Verdana;"> &nbsp; <% out.print(list.get(1)); %> </span>
+					 </div>
 
-
-
-				<br>
-				<div class="row">
-					<div class="col-md-1">Durée : <% out.print(list.get(1)); %></div>
-
-					<div class="col-md-1">Distance : <% out.print(list.get(2)); %></div>
-
-					<div class="col-md-1">Calories : <% out.print(list.get(3)); %></div>
-
-					<div class="col-md-1">Vitesse : <% out.print(vitesse); %>
-										<div id='chart_div4'></div>
+					<div title="Distance" class="col-md-2">
+					<span  style="font-size:25pt;" class="glyphicon glyphicon-sort"></span> 
+					 <span style="font-size:18pt; font-family:Verdana;"> &nbsp;  <% out.print(list.get(2)); %> m </span>
+					
 					</div>
 
-					<div class="col-md-1">Mètre/min : <% out.print(list.get(4)); %></div>
+					<div title="Calories brûlées" class="col-md-2">
+					<span style="font-size:25pt;" class="glyphicon glyphicon-fire"></span>	
+					 <span style="font-size:18pt; font-family:Verdana;"> &nbsp; <% out.print(list.get(3)); %> ca</span>
+					</div>
 
-					<div class="col-md-1">Steps : <%  %></div>
+					<div title="Vitesse moyenne" class="col-md-2">
+					<span style="font-size:25pt;" class="glyphicon glyphicon-flash"></span>	
+					 <span style="font-size:18pt; font-family:Verdana;">  <% out.print(vitesse); %> km/h</span>	
+					</div>
+					
+				    <div title="Mètre/min moyen" class="col-md-2">
+					<span style="font-size:25pt;" class="glyphicon glyphicon-signal"></span>	
+				    <span style="font-size:18pt; font-family:Verdana;"> &nbsp;<% out.print(list.get(4)); %> m/min</span>	
+					</div>
+					
+					</div>
+<br>
+				<div class="row" >
+				
+					<div title="Pulsation" class="col-md-2">
+					<span  style="font-size:25pt;" class="glyphicon glyphicon-heart"></span>						
+					<span style="font-size:18pt; font-family:Verdana;"> &nbsp;<% out.print(0.0);  %> </span>	
+					</div>
 
-					<div class="col-md-1">Pulsation : <%  %></div>
+					<div title="Steps" class="col-md-2">
+					<span style="font-size:25pt;" class="glyphicon glyphicon-road"></span>						
+				    <span style="font-size:18pt; font-family:Verdana;"> &nbsp; <% out.print(0.0);  %> </span>	
+					</div>
 					
+					<div title="Cadence Steps/min" class="col-md-2">
+					<span  style="font-size:25pt;" class="glyphicon glyphicon-stats"></span>						
+					<span style="font-size:18pt; font-family:Verdana;"> &nbsp;<%  out.print(0.0);  %> </span>	
+					</div>
 					
+					<div title="Breathing Rate" class="col-md-2">
+					<span  style="font-size:25pt;" class="glyphicon glyphicon-transfer"></span>						
+					<span style="font-size:18pt; font-family:Verdana;"> &nbsp;<% out.print(0.0);   %> </span>	
+					</div>
 					
+				    <div title="Minute Ventilation " class="col-md-2">
+					<span  style="font-size:25pt;" class="glyphicon glyphicon-sort-by-attributes"></span>						
+					<span style="font-size:18pt; font-family:Verdana;"> &nbsp;<%  out.print(0.0);  %>  </span>	
+					</div>
+					
+
 				</div>
 			</div>
 
 
-
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">Graphiques</h1>
+<br>
+				<h1 class="page-header">Graphiques
+				  
+				</h1>
 
 				<br>
 				<div class="row placeholders">
