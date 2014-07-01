@@ -24,7 +24,7 @@ import org.json.JSONException;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
-/*
+/**
  * Author : Pont Vincent
  * Class : This class do REST requests to the datastore to get data saved from android client.
  * Date : 09.06.2014
@@ -51,7 +51,7 @@ public class RestInvokerDatastore {
 				+ new String(new Base64().encode(userpass.getBytes()));
 	}
 
-	/*
+	/**
 	 * Method to get in JSON one workout with the date and email
 	 * 
 	 * @Param: String date, String email
@@ -121,7 +121,7 @@ public class RestInvokerDatastore {
 
 	}
 
-	/*
+	/**
 	 * Method to get all workouts from the specified email
 	 * 
 	 * @Param: String email
@@ -200,7 +200,7 @@ public class RestInvokerDatastore {
 
 	}
 
-	/*
+	/**
 	 * Method to get all dates from the specified email
 	 * 
 	 * @Param: String email
@@ -272,7 +272,7 @@ public class RestInvokerDatastore {
 
 	}
 
-	/*
+	/**
 	 * Method to return all the workout dates sorted date (last workout)
 	 * 
 	 * @Param : String email
@@ -296,7 +296,7 @@ public class RestInvokerDatastore {
 		return list;
 	}
 
-	/*
+	/**
 	 * Method to sort the date returned by datastore and return the more current
 	 * date (last workout)
 	 * 
@@ -326,7 +326,7 @@ public class RestInvokerDatastore {
 		return lastDate;
 	}
 
-	/*
+	/**
 	 * Method to read all from reader
 	 * 
 	 * @Param : Reader

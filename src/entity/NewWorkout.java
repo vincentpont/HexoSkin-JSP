@@ -1,7 +1,6 @@
 package entity;
 
-/*
- * 
+/**
  * Created by : Vincent Pont
  * Date : 28.06.2014
  * Class to map the data from the dataStore

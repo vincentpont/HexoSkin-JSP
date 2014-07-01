@@ -39,7 +39,7 @@ import org.json.JSONObject;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
-/*
+/**
  * Author : Pont Vincent
  * Date : 09.06.2014
  * Last modification : 25.06.2014

@@ -1,6 +1,6 @@
 package helper;
 
-/*
+/**
  * Class that help to sort a list of String Dates
  * 
  * Created by Vincent Pont on 30.06.2014
