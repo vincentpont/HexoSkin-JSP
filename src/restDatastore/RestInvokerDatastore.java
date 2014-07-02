@@ -41,6 +41,10 @@ public class RestInvokerDatastore {
 	private String url;
 	private JSONObject json;
 	public int countRows = 0;
+	private String StringLatitudes ;
+	private String StringLongitudes ;
+	private String StringVitesses  ;
+	private String StringAltitudes ;
 
 	// Constructor
 	public RestInvokerDatastore() {
@@ -199,6 +203,81 @@ public class RestInvokerDatastore {
 		return list;
 
 	}
+	
+	/**
+	 * Method to return all data of the map by email and date
+	 * 
+	 * @Param: String email, String date
+	 * 
+	 * @Return: JSONObject containing a JSONArray with all the data : 
+	 * List of latitudes, list of longitudes, list of speed and altitudes
+	 */
+	public List getDataMap(String email)
+			throws UnsupportedEncodingException {
+
+		// Create url request and encode email and date
+		String urlRequest = "https://logical-light-564.appspot.com/_ah/api/helloworld/v1/jsonobject/getDataMap?Email="
+				+ URLEncoder.encode(email, "UTF-8");
+
+		List list = new ArrayList();
+
+		try {
+
+			URL url = new URL(urlRequest);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Accept", "application/json");
+			conn.setRequestProperty("Authorization", basicAuth);
+
+			if (conn.getResponseCode() != 200) {
+				throw new RuntimeException("Failed, HTTP error code : "
+						+ conn.getResponseCode() + " "
+						+ conn.getResponseMessage());
+			}
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+					(conn.getInputStream())));
+
+			String jsonText = readAll(br);
+
+			try {
+				json = new JSONObject(jsonText);
+
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			// Disconnect
+			conn.disconnect();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		}
+
+		JSONArray jsonMainArr;
+		try {
+			jsonMainArr = json.getJSONArray("DataMap");
+
+			for (int i = 0; i < jsonMainArr.length(); i++) {
+				JSONObject childJSONObject = jsonMainArr.getJSONObject(i);
+				StringLatitudes = childJSONObject.getString("Latitudes");
+				StringLongitudes = childJSONObject.getString("Longitudes");
+				StringVitesses = childJSONObject.getString("Speed");
+				StringAltitudes = childJSONObject.getString("Altitudes");
+			}
+
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
+
+	}
+	
 
 	/**
 	 * Method to get all dates from the specified email
@@ -237,7 +316,6 @@ public class RestInvokerDatastore {
 
 			try {
 				json = new JSONObject(jsonText);
-		        System.out.println(json.toString());
 
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -270,6 +348,8 @@ public class RestInvokerDatastore {
 		return list;
 
 	}
+	
+	
 
 	/**
 	 * Method to return all the workout dates sorted date (last workout)
@@ -294,6 +374,10 @@ public class RestInvokerDatastore {
 
 		return list;
 	}
+	
+	
+	
+	
 
 	/**
 	 * Method to sort the date returned by datastore and return the more current
@@ -340,5 +424,66 @@ public class RestInvokerDatastore {
 		}
 		return sb.toString();
 	}
+	
+	/**
+	 * Method who substring a string (list) and replace all characters non desired and parse to double list
+	 * 
+	 * @Param : String list
+	 * 
+	 * @Return : List of Double
+	 */
+	private List<Double> substringLists(String list) {
+
+		List<Double> listDouble = new ArrayList<Double>();
+		int j = 0;
+		int temp = 0;
+
+		// Replace all none double characters
+		list = list.replaceAll("\\[", "");
+		list = list.replaceAll("\\]", "");
+		list = list.replace('"', ' ');
+		list = list.trim();
+
+		for (int i = 0; i < list.length(); i++) {
+
+			j = temp;
+
+			if (list.charAt(i) == ',') {
+				System.out.println("i :" + i + " j :" + j);
+				listDouble.add(Double.parseDouble(list.substring(j, i)));
+				System.out.println("Ajout :" + list.substring(j, i));
+				temp = i + 1;
+			}
+		}
+
+		// Add last values
+		listDouble.add(Double.parseDouble(list.substring(j, list.length())));
+
+		return listDouble;
+
+	}
+	
+	
+	/**
+	 *  Getters and Setters
+	 */
+
+	public String getStringLatitudes() {
+		return StringLatitudes;
+	}
+
+	public String getStringLongitudes() {
+		return StringLongitudes;
+	}
+
+	public String getStringVitesses() {
+		return StringVitesses;
+	}
+
+	public String getStringAltitudes() {
+		return StringAltitudes;
+	}
+
+
 
 }

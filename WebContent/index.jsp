@@ -245,12 +245,12 @@
 					<span style="font-size:18pt; font-family:Verdana;"> &nbsp;<% out.print(0.0);  %> </span>	
 					</div>
 
-					<div title="Steps" class="col-md-2">
+					<div title="Pas" class="col-md-2">
 					<span style="font-size:25pt;" class="glyphicon glyphicon-road"></span>						
 				    <span style="font-size:18pt; font-family:Verdana;"> &nbsp; <% out.print(0.0);  %> </span>	
 					</div>
 					
-					<div title="Cadence Steps/min" class="col-md-2">
+					<div title="Cadence pas/min" class="col-md-2">
 					<span  style="font-size:25pt;" class="glyphicon glyphicon-stats"></span>						
 					<span style="font-size:18pt; font-family:Verdana;"> &nbsp;<%  out.print(0.0);  %> </span>	
 					</div>
