@@ -1,60 +1,59 @@
 package restHexoSkin;
 
-import java.io.UnsupportedEncodingException;
+import java.util.Iterator;
+import java.util.List;
 
-import org.apache.http.entity.StringEntity;
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
+import com.google.protobuf.TextFormat.ParseException;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+
 
 public class testHexoSkin {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws JSONException, ParseException {
+		
+		// Oauth
 		String username = "bruno.alves@hevs.ch";
 		String password = "$hes-so2014!";
-		String urlAllData = "https://api.hexoskin.com/api/v1/datatype/";
-		String url = "https://api.hexoskin.com/api/v1/data/?datatype=19&record=35610";
-
+		
+		
 		// Voir les séances réalisées
 		String s1 = "https://api.hexoskin.com/api/v1/record/?startTimestamp__gte=1404205354";
-		
-		// Interroger la table pour les données
-		String s2 = "https://api.hexoskin.com/api/v1/data/?datatype=52&record=35610";
 
 		RestInvokerHexo rest = new RestInvokerHexo(username, password, s1);
-		JSONObject json = new JSONObject();
-		json = rest.getJSONData();
-
-		try {
-
-			System.out.println(json.toString());
-
-			// Decompose the jsonObject jsonArray in a list
-			JSONArray jsonMainArr = json.getJSONArray("objects");
-			for (int i = 0; i < jsonMainArr.length(); i++) {
-				JSONObject childJSONObject = jsonMainArr.getJSONObject(i);
-				System.out.println("Séance id : "
-						+ childJSONObject.getString("id") + ", Date : "
-						+ childJSONObject.getString("start_date"));
-
-			}
-
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		rest.getJSONObjectData();
+		/*
+		// return id by date
+		String id = rest.returnIdOfWorkout("2014-06-28T11:11:42+00:00");
 		
+		
+		String idMetric = "52";
+		String urlWithId = "https://api.hexoskin.com/api/v1/data/?datatype="+idMetric+"&record=" +id;
+		
+		
+		System.out.println("Id : " +rest.returnIdOfWorkout("2014-06-28T11:11:42+00:00"));
+		System.out.println("Values : " +rest.GetLastValueFromDatatype(urlWithId));
 
+		
+		
+		String dateNonFormated = "2014-06-28T11:11:42+00:00";
+		String dateFormated = dateNonFormated.substring(0, 10);
+		dateFormated = dateFormated.replaceAll("-", ".");
+		System.out.println("Date : " + dateFormated);
+		 */
+		
+		
+		// Get all datas
+		String string = "{'19':[[359412199216,71],[359412199472,70],[359412199728,70],[359412199984,59]]}" ;
+		System.out.println(string);
+		List list = rest.returnAllValueFromJson(string);
+
+		 Iterator<String> iterator = list.iterator(); 
+		 
+		 while (iterator.hasNext()) {
+		 System.out.println(iterator.next()); 
+		 }
 
 	}
 
