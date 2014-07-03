@@ -6,7 +6,8 @@
 
 <!-- Import restInvoker class -->
 <%@ page import="restDatastore.RestInvokerDatastore"%>
-<%@ page import="java.util.Iterator, java.util.List"%>
+<%@ page import="restHexoSkin.RestInvokerHexo"%>
+<%@ page import="java.util.Iterator, java.util.List, java.sql.Timestamp, java.util.Date;"%>
 
 <!-- Placez ce script JavaScript asynchrone juste devant votre balise </body> -->
 <script type="text/javascript">
@@ -238,31 +239,51 @@
 					
 					</div>
 <br>
+
+			<%
+			Timestamp ts = new Timestamp(new Date().getTime());
+			String s1 = "https://api.hexoskin.com/api/v1/record/?startTimestamp__gte="+ts;
+			RestInvokerHexo restHexo = new RestInvokerHexo(s1);
+			
+			// Get lastdate from datastore to compare with hexoskin and substring because is not the same format
+			String lastDateWorkout = rest.getLastDateWorkout("vincentpont@gmail.com");
+			// A modifier lorsque que j'aurai une date synchro avec android
+			lastDateWorkout = lastDateWorkout.substring(0, 10);
+			lastDateWorkout = lastDateWorkout.replaceAll(".", "-");
+			System.out.println(lastDateWorkout);
+			List<String> listPulsation = restHexo.returnAllValueFromJson("2014-06-28", "19");
+			List<String> listSteps = restHexo.returnAllValueFromJson("2014-06-28", "52");
+			List<String> listBreathing = restHexo.returnAllValueFromJson("2014-06-28", "33");
+			List<String> listVentilation = restHexo.returnAllValueFromJson("2014-06-28", "36");
+			List<String> listVolumeTidal = restHexo.returnAllValueFromJson("2014-06-28", "37");
+			
+			%>
+
 				<div class="row" >
 				
 					<div title="Pulsation" class="col-md-2">
 					<span  style="font-size:25pt;" class="glyphicon glyphicon-heart"></span>						
-					<span style="font-size:18pt; font-family:Verdana;"> &nbsp;<% out.print(0.0);  %> </span>	
+					<span style="font-size:18pt; font-family:Verdana;"> &nbsp;<% out.print(listPulsation.get(listPulsation.size()-1));  %> </span>	
 					</div>
 
 					<div title="Pas" class="col-md-2">
 					<span style="font-size:25pt;" class="glyphicon glyphicon-road"></span>						
-				    <span style="font-size:18pt; font-family:Verdana;"> &nbsp; <% out.print(0.0);  %> </span>	
+				    <span style="font-size:18pt; font-family:Verdana;"> &nbsp; <% out.print(listSteps.get(listSteps.size()-1));  %> </span>	
 					</div>
 					
-					<div title="Cadence pas/min" class="col-md-2">
+					<div title="Volume Tidal" class="col-md-2">
 					<span  style="font-size:25pt;" class="glyphicon glyphicon-stats"></span>						
-					<span style="font-size:18pt; font-family:Verdana;"> &nbsp;<%  out.print(0.0);  %> </span>	
+					<span style="font-size:18pt; font-family:Verdana;"> &nbsp;<%  out.print(listVolumeTidal.get(listVolumeTidal.size()-1));  %> </span>	
 					</div>
 					
 					<div title="Breathing Rate" class="col-md-2">
 					<span  style="font-size:25pt;" class="glyphicon glyphicon-transfer"></span>						
-					<span style="font-size:18pt; font-family:Verdana;"> &nbsp;<% out.print(0.0);   %> </span>	
+					<span style="font-size:18pt; font-family:Verdana;"> &nbsp;<% out.print(listBreathing.get(listBreathing.size()-1));  %> </span>	
 					</div>
 					
 				    <div title="Minute Ventilation " class="col-md-2">
 					<span  style="font-size:25pt;" class="glyphicon glyphicon-sort-by-attributes"></span>						
-					<span style="font-size:18pt; font-family:Verdana;"> &nbsp;<%  out.print(0.0);  %>  </span>	
+					<span style="font-size:18pt; font-family:Verdana;"> &nbsp;<%  out.print(listVentilation.get(listVentilation.size()-1));  %>  </span>	
 					</div>
 					
 
